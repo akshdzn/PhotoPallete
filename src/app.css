@@ -1,0 +1,27 @@
+@import url("../public/font/font.css");
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
+    box-sizing: border-box;
+    font-family: "Sunghyun Sans";
+}
+
+main {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main::selection {
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+}
+
+main::-moz-selection {
+    background-color: black;
+    color: white;
+}
