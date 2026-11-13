@@ -1,15 +1,11 @@
 <script>
   import Dropper from './lib/Dropper.svelte';
   import logoIcon from './assets/logo.svg';
-  import bgNoise from './assets/bg-noise.png';
 
   let colors = $state(['#60A2D9', '#EEE2D6', '#758CAB', '#9B9A9F', '#758CAB', '#9B9A9F']);
 </script>
 
 <main class="desktop-layout" data-node-id="3:76">
-  <!-- Subtle noise background texture (Rectangle 9, #4:99) -->
-  <div class="bg-noise" style="background-image: url('{bgNoise}');" data-node-id="4:99"></div>
-
   <!-- Header -->
   <header class="header">
     <div class="brand" data-node-id="3:83">
@@ -71,19 +67,6 @@
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-  }
-
-  /* Tiled background noise pattern */
-  .bg-noise {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: repeat;
-    background-size: 40px;
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 1;
   }
 
   /* Header */
