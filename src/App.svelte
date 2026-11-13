@@ -19,7 +19,7 @@
       <span class="brand-title" data-node-id="3:86">PhotoPallete</span>
     </div>
     <a
-      href="https://example.com"
+      href="https://github.com/akshdzn/PhotoPallete"
       target="_blank"
       rel="noopener noreferrer"
       class="github-link"
