@@ -235,6 +235,7 @@
     border-radius: 20px;
     box-sizing: border-box;
     position: relative;
+    max-width: 100%;
     transition: all ease-in-out 200ms;
   }
 
@@ -258,7 +259,10 @@
   /* Empty state styles */
   .dropzone-inner {
     width: 407px;
+    max-width: calc(100vw - 44px);
     height: 280px;
+    max-height: calc((100vw - 44px) * 280 / 407);
+    aspect-ratio: 407 / 280;
     position: relative;
     border-radius: 12px;
     display: flex;
@@ -288,7 +292,9 @@
     gap: 4px;
     position: relative;
     z-index: 1;
-    width: 250px;
+    width: min(250px, 90%);
+    padding: 0 8px;
+    box-sizing: border-box;
   }
 
   .icon-wrapper {
@@ -311,14 +317,13 @@
   .drop-text {
     margin: 0;
     font-family: 'Sunghyun Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 20px;
+    font-size: clamp(16px, 4.5vw, 20px);
     font-weight: 500;
-    line-height: normal;
+    line-height: 1.3;
     color: #000000;
     opacity: 0.7;
     text-align: center;
     word-break: break-word;
-    white-space: nowrap;
   }
 
   /* Received state styles */
@@ -327,11 +332,14 @@
     flex-direction: column;
     position: relative;
     width: 407px;
+    max-width: calc(100vw - 44px);
   }
 
   .image-card {
-    width: 407px;
+    width: 100%;
     height: 280px;
+    max-height: calc((100vw - 44px) * 280 / 407);
+    aspect-ratio: 407 / 280;
     border-radius: 12px;
     position: relative;
     overflow: hidden;
@@ -350,19 +358,20 @@
 
   .action-bar {
     position: absolute;
-    bottom: 14px;
+    bottom: clamp(10px, 3.5vw, 14px);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: clamp(4px, 1.8vw, 8px);
+    max-width: calc(100% - 16px);
     z-index: 10;
   }
 
   .action-btn {
-    height: 32px;
-    padding: 0 9px;
+    height: clamp(28px, 7.5vw, 32px);
+    padding: 0 clamp(6px, 2vw, 9px);
     border-radius: 10px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.51) 100%);
     backdrop-filter: blur(12.5px);
@@ -376,6 +385,8 @@
     overflow: hidden;
     box-sizing: border-box;
     outline: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .action-btn.with-text {
@@ -383,8 +394,8 @@
   }
 
   .btn-icon-wrapper {
-    width: 20px;
-    height: 20px;
+    width: clamp(16px, 4.5vw, 20px);
+    height: clamp(16px, 4.5vw, 20px);
     position: relative;
     display: flex;
     align-items: center;
@@ -393,14 +404,14 @@
   }
 
   .btn-icon {
-    width: 20px;
-    height: 20px;
+    width: 100%;
+    height: 100%;
     display: block;
   }
 
   .btn-text {
     font-family: 'Sunghyun Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 16px;
+    font-size: clamp(13px, 3.6vw, 16px);
     font-weight: 500;
     line-height: normal;
     color: rgba(0, 0, 0, 0.8);
@@ -410,8 +421,8 @@
   /* Color swatches */
   .swatches-row {
     display: flex;
-    width: 407px;
-    height: 67px;
+    width: 100%;
+    height: clamp(52px, 15vw, 67px);
     margin-top: -13px;
     position: relative;
     z-index: 1;
@@ -419,20 +430,24 @@
 
   .swatch {
     flex: 1;
-    height: 67px;
+    min-width: 0;
+    height: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding: 0 0 17px 0;
+    padding: 0 2px clamp(10px, 3.5vw, 17px) 2px;
     margin: 0;
     border: none;
     box-sizing: border-box;
     cursor: pointer;
     outline: none;
     transition: filter 150ms ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .swatch:hover {
+  .swatch:hover,
+  .swatch:active {
     filter: brightness(0.97);
   }
 
@@ -447,7 +462,7 @@
   .swatch-copy-text {
     margin: 0;
     font-family: 'Sunghyun Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 14px;
+    font-size: clamp(11px, 2.8vw, 14px);
     font-weight: 500;
     line-height: normal;
     text-align: center;
@@ -459,6 +474,7 @@
   }
 
   .swatch:hover .swatch-copy-text,
+  .swatch:active .swatch-copy-text,
   .swatch-copy-text.is-copied {
     opacity: 1;
   }

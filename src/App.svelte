@@ -65,7 +65,8 @@
     width: 100%;
     min-height: 100dvh;
     background-color: #F3F3F3;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,7 +93,9 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding-top: 24px;
+    padding-top: max(20px, env(safe-area-inset-top));
+    padding-left: 16px;
+    padding-right: 16px;
     position: relative;
     z-index: 10;
   }
@@ -136,6 +139,7 @@
     color: #000000;
     text-decoration: none;
     transition: opacity 150ms ease;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .github-link:hover {
@@ -151,7 +155,7 @@
     justify-content: center;
     position: relative;
     z-index: 10;
-    padding: 32px 16px 80px;
+    padding: 24px 16px max(64px, env(safe-area-inset-bottom));
     box-sizing: border-box;
   }
 
@@ -162,7 +166,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 1027px;
-    max-width: 90vw;
+    max-width: 100%;
     height: 96px;
     filter: blur(44.2px);
     pointer-events: none;
@@ -206,10 +210,26 @@
   @media (max-width: 1060px) {
     .blurred-elems {
       width: 100%;
+      height: 72px;
+      filter: blur(36px);
     }
     .rect-1 { width: 25%; left: 0; }
     .rect-2 { width: 25%; left: 25%; }
     .rect-3 { width: 25%; left: 50%; }
     .rect-4 { width: 25%; left: 75%; }
+  }
+
+  @media (max-width: 600px) {
+    .header {
+      padding-top: max(16px, env(safe-area-inset-top));
+      gap: 6px;
+    }
+    .main-stage {
+      padding: 16px 12px max(48px, env(safe-area-inset-bottom));
+    }
+    .blurred-elems {
+      height: 48px;
+      filter: blur(24px);
+    }
   }
 </style>
